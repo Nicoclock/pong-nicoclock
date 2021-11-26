@@ -1,0 +1,4 @@
+game (id IDENTITY, date TIMESTAMPTZ)
+player (id IDENTITY, name TEXT)
+
+score (id IDENTITY, #game(id), #player(id), points INT)

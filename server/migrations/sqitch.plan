@@ -1,3 +1,6 @@
 %syntax-version=1.0.0
 %project=pong
 
+init 2021-11-25T20:37:45Z Nicoclock <nicolas.charpin@oclock.io> # Structures tables
+view 2021-11-25T23:21:52Z Nicoclock <nicolas.charpin@oclock.io> # Vue scores
+functions 2021-11-26T19:41:33Z Nicoclock <nicolas.charpin@oclock.io> # fonctions de gestion des scores
