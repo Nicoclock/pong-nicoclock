@@ -1,6 +1,6 @@
 /**
  * Module implémentant les commandes de base de sqitch
- * Il permet de déployer les migrations sur un schéma de test
+ * Il permet de déployer/supprimer les migrations sur un schéma de test
  */
 
 const fs = require('fs');

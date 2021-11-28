@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "dev": "DB_UNIT_TEST=true nodemon index.js",
-    "start": "node index.js"
+    "test": "NODE_ENV=test jest --detectOpenHandles",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "NODE_ENV=production node index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +16,13 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-jsdoc-swagger": "^1.6.7",
+    "joi": "^17.4.2",
     "pg": "^8.7.1",
-    "pg-format": "^1.0.4"
+    "pg-format": "^1.0.4",
+    "redis": "^4.0.0"
   },
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
   }
 }

@@ -3,6 +3,7 @@
 BEGIN;
 
 CREATE TYPE scores_by_player AS (
+	game_id INT,
 	date TIMESTAMPTZ,
 	joueur TEXT,
 	score1 INT,
@@ -12,11 +13,11 @@ CREATE TYPE scores_by_player AS (
 
 CREATE FUNCTION scores_for(INT) RETURNS SETOF scores_by_player AS $$
 
-	SELECT date, joueur1 as joueur, score1, joueur2 as adversaire, score2
+	SELECT game_id, date, joueur1 as joueur, score1, joueur2 as adversaire, score2
 	FROM scores
 	WHERE joueur1=(SELECT name FROM player WHERE id=$1)
 	UNION
-	SELECT date, joueur2, score2, joueur1 as adversaire, score1
+	SELECT game_id, date, joueur2, score2, joueur1 as adversaire, score1
 	FROM scores
 	WHERE joueur2=(SELECT name FROM player WHERE id=$1)
 

@@ -4,13 +4,18 @@ const DBHandler = require('./database/DBHandler');
 let db;
 
 module.exports = {
-    //pour rendre la connexion configurable pour les TU
+    /**
+     * Permet de changer le pool de connexion à la BDD
+     * @param {DBHandler} pool 
+     */
     setDb: async function(pool) {
-        if (db)
+        if (db && db !== pool)
             await db.closePool();
         db = pool;
     },
-    //
+    /**
+     * Initialise la connexion pour l'environnement de prod
+     */
     checkDb: async function() {
         if (!db)
             db = await (new DBHandler()).openPool();
@@ -59,7 +64,7 @@ module.exports = {
     players: async function() {
         try {
             await this.checkDb();
-            return await db.execute('SELECT * FROM player');
+            return await db.execute('SELECT * FROM player ORDER BY name');
         } catch (error) {
             if (error.detail)
                 throw new Error(error.detail);

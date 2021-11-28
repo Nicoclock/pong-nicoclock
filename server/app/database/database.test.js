@@ -147,6 +147,8 @@ describe('Base PostgreSQL', () => {
                 const playerId = 8;
                 const rows = await db.execute('SELECT * FROM scores_for($1)', [playerId]);
                 expect(rows.length).toBe(3);
+                expect(rows[0]).toHaveProperty('game_id');
+                expect(typeof rows[0].game_id).toBe('number');
                 expect(rows[0]).toHaveProperty('date');
                 expect(typeof rows[0].date).toBe('object');
                 expect(rows[0].date).toBeInstanceOf(Date);
