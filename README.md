@@ -9,7 +9,7 @@ Il s'agit d'un ping-pong virtuel en 11 points
 
 [PostgreSQL](https://www.postgresql.org/)  
 [Sqitch](https://sqitch.org/)  
-[Redis](https://redis.io/)
+[Redis](https://redis.io/)  
 [NodeJs](https://nodejs.org/fr/)
 
 Tous ces éléments doivent être installé sur l'hôte pour faire fonctionner l'API

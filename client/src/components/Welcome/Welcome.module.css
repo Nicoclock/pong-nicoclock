@@ -1,0 +1,42 @@
+.welcome {
+    margin: 20px;
+    color: #00c4a7;
+}
+
+.welcome h1 {
+    text-align: center;
+    margin: 30px 0;
+    text-shadow: 2px 0px 3px white
+}
+
+.content {
+    overflow: scroll;
+    font-size: 1.2em;
+    width: 80%; 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.content div {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.content a {
+    padding: 30px;
+    background-color: #fffdd8;
+    border-radius: 10px;
+    border: 3px solid #00c4a7;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #00c4a7;
+    font-weight: bold;
+}
+
+.content a:hover {
+    background-color: #00c4a7;
+    border: 3px solid #fffdd8;
+    color: #fffdd8
+}

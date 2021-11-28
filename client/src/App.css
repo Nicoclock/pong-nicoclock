@@ -1,0 +1,6 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to top, #021132 0%, #1a4c79 100%) scroll;
+  overflow: auto;
+}
