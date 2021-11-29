@@ -2,7 +2,6 @@ const {Pool} = require('pg');
 
 class DBHandler {
     pool;
-    client;
 
     openPool(config={}) {
         //l'object config optionnel permet d'écraser les valeurs par défaut des variables de connexion
@@ -25,14 +24,9 @@ class DBHandler {
      */
     async execute(sql, data) {
         try {
-            this.client = await this.pool.connect();
-            const result = await this.client.query(sql, data);
-            await this.client.release(true);
+            const result = await this.pool.query(sql, data);
             return result.rows && result.rows.length ? result.rows : result.rowCount;
         } catch (error) {
-            // en cas d'erreur, on s'assure de libérer les ressources
-            if (this.client)
-                await this.client.release(true);
             console.log(error);
             throw error;
         }

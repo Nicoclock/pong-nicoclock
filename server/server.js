@@ -4,11 +4,9 @@ const expressJSDocSwagger = require('express-jsdoc-swagger');
 
 const app = express();
 
-const port = process.env.PORT || 5000;
-
-// ouverture de l'API aux requests venant de localhost et de la machine de prod
+// ouverture de l'API aux requests venant de localhost:3000 et de la machine de prod
 app.use(cors({
-	origin: [`http://localhost:${port}`, `http://178.32.220.230/`]
+	origin: [`http://localhost:3000`, `http://178.32.220.230:3500`]
 }));
 
 // parser json pour le request.body

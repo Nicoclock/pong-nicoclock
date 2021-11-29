@@ -4,7 +4,7 @@
 
 const redis = require('redis');
 
-const TIMEOUT = 60 * 30; // 30 minutes
+const TIMEOUT = 60;// * 30; // 30 minutes
 
 class Cache {
     db;
@@ -29,13 +29,14 @@ class Cache {
         // console.log(request.url);
         try {
             if (!this.connected) {
-                await this.db.connect();
                 this.connected = true;
+                await this.db.connect();
             }
+
             const url = `${this.prefix}${request.url}`;
-            if (this.keys.includes(url)) {
+            const cachedString = await this.db.get(url);
+            if (cachedString) {
                 // console.log('Getting from cache');
-                const cachedString = await this.db.get(url);
                 const cachedValue = JSON.parse(cachedString);
                 response.json(cachedValue);
             } else {
@@ -50,7 +51,7 @@ class Cache {
                 next();
             }
         } catch(error) {
-           throw error;
+           response.status(500).json(error.message);
         }
     };
 
@@ -67,30 +68,30 @@ class Cache {
             while(key=this.keys.shift())
                 await this.db.del(key);
         } catch(error) {
-            throw error;
+            response.status(500).json(error.message);
         }
     };
 
     flush = async function(request, response, next) {
         try {
             if (!this.connected) {
-                await this.db.connect();
                 this.connected = true;
+                await this.db.connect();
             }
             await this.directFlush();
             next();
         } catch(error) {
-            throw error;
+            response.status(500).json(error.message);
         }
     };
 
     async close() {
         if(this.connected) {
             try {
-                await this.db.quit();
                 this.connected = false;
+                await this.db.quit();
             } catch (error) {
-                throw error
+           response.status(500).json(error.message);
             }
         }
     }

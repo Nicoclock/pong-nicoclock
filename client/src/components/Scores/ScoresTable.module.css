@@ -1,0 +1,33 @@
+table {
+    width: 80%;
+    border: 1px solid white;
+    border-collapse: collapse
+
+}
+
+td, th {
+    width: 20%;
+    text-align: center;
+    border: 1px solid white;
+}
+
+th {
+    height: 40px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+th img {
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+
+td {
+    height: 30px;
+}
+
+th.sortable {
+    cursor: pointer;
+}
+

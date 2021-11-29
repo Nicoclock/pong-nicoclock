@@ -2,4 +2,5 @@ server/node_modules
 server/.env
 server/sqitch.conf
 client/node_modules
+client/.env
 client/build

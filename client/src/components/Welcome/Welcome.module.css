@@ -1,14 +1,3 @@
-.welcome {
-    margin: 20px;
-    color: #00c4a7;
-}
-
-.welcome h1 {
-    text-align: center;
-    margin: 30px 0;
-    text-shadow: 2px 0px 3px white
-}
-
 .content {
     overflow: scroll;
     font-size: 1.2em;
