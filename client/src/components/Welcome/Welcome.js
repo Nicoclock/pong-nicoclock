@@ -16,7 +16,7 @@ const Welcome = () => {
                 <p>Le score de chaque joueur est affiché pour la partie en cours.</p>
                 <div>
                     <NavLink to='/game'>Démarrer une partie</NavLink>
-                    <NavLink to='/game'>Afficher les scores</NavLink>
+                    <NavLink to='/scores'>Afficher les scores</NavLink>
                 </div>
                 <p>Une démonstration du principe du jeu :</p>
                 <video src={demo} controls={true} alt="Démonstration du jeu Pong original" />

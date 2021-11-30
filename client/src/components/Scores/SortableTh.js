@@ -3,7 +3,7 @@ import trierCurrent from '../../assets/trierCurrent.png';
 
 const SortableTh = ({className, sortBy, onClick, children}) => {
     return (
-        <th className={className} onClick={onClick}>
+        <th role="columnheader" className={className} onClick={onClick}>
             {children}
             {children === sortBy ?
                 <img src={trierCurrent} alt="Inverser l'ordre de tri" />

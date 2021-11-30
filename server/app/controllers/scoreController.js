@@ -47,6 +47,7 @@ module.exports = {
      * @returns undefined en environnement de prod, l'argument passeé à la méthode json en environnement de test
      */
      addScore: async function(request, response) {
+         console.log(request.body);
         try {
             const rows = await dataMapper.addScore(request.body);
             if (rows && rows[0])

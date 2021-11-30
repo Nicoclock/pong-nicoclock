@@ -1,6 +1,6 @@
 .content {
     overflow: scroll;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     width: 80%; 
     margin: auto;
     display: flex;
@@ -18,7 +18,7 @@
     background-color: #fffdd8;
     border-radius: 10px;
     border: 3px solid #00c4a7;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     text-decoration: none;
     color: #00c4a7;
     font-weight: bold;

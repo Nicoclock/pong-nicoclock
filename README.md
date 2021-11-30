@@ -46,7 +46,7 @@ Copier le fichier sqitch.example.conf en le renommant en sqitch.conf
 
 Copier le fichier .env.example en le renommant en .env
 
-Compléter ce fichier avec les informations de connexion à la BDD et le port de l'application express
+Compléter ce fichier avec les informations de connexion à la BDD, au cache Redis et le port de l'application express
 
 ### Déploiement de la structure de la BDD
 
@@ -57,7 +57,7 @@ La base de données respecte le MCD suivant :
 Pour déployer la structure, se positionner dans le dossier `server` et lancer la commande
 
 ```bash
-sqitch deploy
+PGUSER=<username> PGPASSWORD=<password> sqitch deploy
 ```
 
 ### Récupération des dépendances
@@ -102,3 +102,11 @@ Pour exécuter les tests, depuis le dossier `server`, lancer la commande :
 ```bash
 npm test
 ```
+
+## Cache Redis
+
+Afin d'accélérer la récupération des informations, chaque résultat d'une requête SQL est placé dans le cache Redis pour une durée de 30 minutes
+
+Ce délai garantit qu'aucune information devenue inutile ne persitera dans le cache
+
+Les entrées en cache seront automatiquement supprimées à chaque ajout d'un nouveau score en BDD afin de déclencher une nouvelle requête SQL pour obtenir la liste des scores mise à jour

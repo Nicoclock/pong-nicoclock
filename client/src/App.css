@@ -2,7 +2,10 @@
   width: 100vw;
   height: 100vh;
   background: linear-gradient(to top, #021132 0%, #1a4c79 100%) scroll;
-  overflow: auto;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
@@ -13,5 +16,5 @@
 h1 {
   text-align: center;
   margin: 30px 0;
-  text-shadow: 2px 0px 2px white
+  text-shadow: -1px -1px white
 }

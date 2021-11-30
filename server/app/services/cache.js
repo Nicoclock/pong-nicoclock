@@ -4,7 +4,7 @@
 
 const redis = require('redis');
 
-const TIMEOUT = 60;// * 30; // 30 minutes
+const TIMEOUT = 60 * 30; // 30 minutes
 
 class Cache {
     db;
@@ -14,7 +14,7 @@ class Cache {
 
     constructor(project) {
         this.prefix = `${project}:`;
-        this.db = redis.createClient();
+        this.db = redis.createClient(process.env.REDIS_URL);
     }
 
     /**

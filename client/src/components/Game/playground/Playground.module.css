@@ -1,0 +1,89 @@
+.playground {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score {
+    margin: 0 20px;
+    font-size: 1.2rem;
+}
+
+.score em {
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.5rem;
+}
+
+.ground {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field {
+    position: relative;
+    border: 1px solid #00c4a7;
+    background-color: #021132;
+    overflow: hidden;
+}
+
+.net {
+    top: 0px;
+    left: 49.8%;
+    width: 0.4%;
+    height: 100%;
+    background-color: #00c4a7;
+    position: absolute;
+}
+
+.player {
+    position: absolute;
+    top: 40%;
+    width: 1.5%;
+    height: 20%;
+    background-color: #1a4c79;
+    border: 1px solid white;
+}
+
+.ball {
+    position: absolute;
+    top: calc(50% - 3% * 0.6);
+    left: 48.5%;
+    width: 3%;
+    height: calc(3% / 0.6);
+    border-radius: 50%;
+    background-color: #fffdd8;
+    display: none;
+}
+
+.endGame {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.gameLink {
+    padding: 30px;
+    background-color: #fffdd8;
+    border-radius: 10px;
+    border: 3px solid #00c4a7;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #00c4a7;
+    font-weight: bold;
+    height: 2rem;
+}
+
+.gameLink:hover {
+    background-color: #00c4a7;
+    border: 3px solid #fffdd8;
+    color: #fffdd8
+}

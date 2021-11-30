@@ -15,27 +15,27 @@ const ScoresTable = ({scores, sortBy, onClick}) => {
     }
 
     return (
-        <table>
+        <table role="table">
             <thead>
-                <tr>
-                    {keys.map(key => {
-                        if (scores[0][key]) {
+                <tr role="row">
+                    {keys.map(key => {        
+                        if (scores[0][key] !== undefined) {
                             if (sortables.includes(key) && scores.length > 1)
                                 return <SortableTh key={key} className={styles.sortable} sortBy={sortBy} onClick={onClick}>{key}</SortableTh>
-                            return <th key={key}>{key}</th>
+                            return <th key={key} role="columnheader">{key}</th>
                         }
                         return null;
                     })}
                 </tr>
             </thead>
             <tbody>
-                {scores.map(score => <tr key={score.game_id}>
+                {scores.map(score => <tr key={score.game_id} role="row">
                     {keys.map((key, index) => {
                         if (key === 'date') {
                             const date = new Date(score[key]).toLocaleString('fr-FR', dateOptions);
-                            return <td key={index}>{date}</td>
+                            return <td key={index} role="cell">{date}</td>
                         }
-                        return score[key] && <td key={index}>{score[key]}</td>
+                        return score[key] !== undefined && <td key={index} role="cell">{score[key]}</td>
                     })}
                 </tr>)}
             </tbody>
