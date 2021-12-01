@@ -167,7 +167,7 @@ cp -R ./build/* ../server/public
 
 - useAutoscroll : permet de scroller automatiquement en bas de page lors de la configuration du jeu
 - useBallLoop : gestion de la boucle d'animation du jeu
-- useDevices : configure l' EventListener du clavier ou les fonctions d'animation du/des gamepads
+- useDevices : configure l'EventListener du clavier ou les fonctions d'animation des gamepads
 - useFetch : effectue les requête en GET vers l'API
 - useGamepad : gestion des événements de détection des gamepads
 - useLoop : boucle d'animation globale
