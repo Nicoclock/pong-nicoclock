@@ -7,10 +7,10 @@ Il s'agit d'un ping-pong virtuel en 11 points
 
 ## Stack technique
 
-[PostgreSQL](https://www.postgresql.org/)  >= v12
-[Sqitch](https://sqitch.org/)  latest
-[Redis](https://redis.io/)  latest
-[NodeJs](https://nodejs.org/fr/) >= v12
+[PostgreSQL](https://www.postgresql.org/)  >= v12. 
+[Sqitch](https://sqitch.org/)  latest. 
+[Redis](https://redis.io/)  latest. 
+[NodeJs](https://nodejs.org/fr/) >= v12. 
 
 Tous ces éléments doivent être installé sur l'hôte pour faire fonctionner l'API
 
