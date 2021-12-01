@@ -74,7 +74,7 @@ const createRouter = (testDb, testRedis) => {
     
     
     /**
-     * GET /scores
+     * GET /api/scores
      * @summary List of all scores
      * @tags Scores
      * @param {string} sortBy.query.optional - The field name to be used for sorting
@@ -85,7 +85,7 @@ const createRouter = (testDb, testRedis) => {
     router.get('/scores', cache, scoreController.scores);
     
     /**
-     * GET /scores/{playerId}
+     * GET /api/scores/{playerId}
      * @summary List of all scores for a specific user
      * @tags Scores
      * @param {number} playerId.path.required - The field name to be used for sorting
@@ -98,7 +98,7 @@ const createRouter = (testDb, testRedis) => {
     router.get('/scores/:playerId', cache, validateParams(scoresForSchema), scoreController.scoresFor);
     
     /**
-     * POST /scores
+     * POST /api/scores
      * @summary Add a new game score in database
      * @tags Scores
      * @param {NewScorePost} request.body.required - application/json
@@ -109,7 +109,7 @@ const createRouter = (testDb, testRedis) => {
     router.post('/scores', flush, validateBody(scoreSchema), scoreController.addScore);
     
     /**
-     * GET /players
+     * GET /api/players
      * @summary List of all scores
      * @tags Players
      * @return {array<Player>} 200 - An array of all registered players
