@@ -2,6 +2,11 @@ import useFetch from '../../../hooks/useFetch';
 
 import styles from './PlayerSelect.module.css';
 
+/**
+ * Permet la sélection d'un joueur présent en BDD
+ * @param {object} props 
+ * @returns {JSX} <select> des joueurs existants
+ */
 const PlayerSelect = ({className, all, ignore, value, onChange}) => {
 
     const [error, data] = useFetch('/players');

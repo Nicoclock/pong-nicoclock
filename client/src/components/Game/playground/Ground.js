@@ -7,7 +7,10 @@ import useBallLoop from '../../../hooks/useBallLoop';
 
 import styles from './Playground.module.css';
 
-
+/**
+ * Déclare les références pour la gestion des éléments dans la boucle d'animation
+ * @returns {JSX} Le terrain et les éléments de jeu
+ */
 const Ground = () => {
     const groundRef = useRef();
     const fieldRef = useRef();
@@ -15,9 +18,13 @@ const Ground = () => {
     const rightRef = useRef();
     const ballRef = useRef();
 
+    //dimensions du terrain
     const size = useResize(groundRef);
+    //événements et fonctions de gestion des devices sélectionnés
     useDevices(fieldRef, leftRef, rightRef);
+    //gestion des éléments du jeu
     useBallLoop(ballRef, leftRef, rightRef, fieldRef);
+    //lancement de la boucle d'animation
     useLoop();
 
     return (

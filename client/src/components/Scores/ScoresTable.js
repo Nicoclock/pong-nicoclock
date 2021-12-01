@@ -2,6 +2,13 @@ import SortableTh from './SortableTh';
 
 import styles from './ScoresTable.module.css';
 
+/**
+ * Présentation des scores sauvegardés
+ * Le tri est descendant par défaut pour les dates, ascendant par défaut pour les autres champs
+ * Le switch s'effectue en cliquant sur le header de la colonne
+ * @param {object} props 
+ * @returns {JSX} Tableau des scores triable par colonnes
+ */
 const ScoresTable = ({scores, sortBy, onClick}) => {
     const sortables = ['date', 'joueur1', 'joueur2', 'adversaire', 'score1', 'score2'];
     const keys = ['date', 'joueur', 'joueur1', 'score1', 'adversaire', 'joueur2', 'score2'];

@@ -87,3 +87,28 @@
     border: 3px solid #fffdd8;
     color: #fffdd8
 }
+
+.resultats {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.resultat {
+    margin: 0 20px;
+    font-size: 1.7rem;
+    padding: 0 20px    
+}
+
+.resultat em {
+    font-weight: bold;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+.winner {
+    text-align: center;
+    padding: 30px;
+    font-size: 3em;
+    font-weight: bold;
+}

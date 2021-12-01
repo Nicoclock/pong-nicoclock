@@ -18,6 +18,7 @@ const useResize = ref => {
                 let fit = false;
                 let width;
                 let height;
+                //calcul du format 10/6 optimal pour la place disponible sur l'écran
                 while (!fit) {
                     width = ground.width * start;
                     height = width * ratio;

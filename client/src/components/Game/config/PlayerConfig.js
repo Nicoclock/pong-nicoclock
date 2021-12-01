@@ -8,7 +8,11 @@ import GamepadSelect from './GamepadSelect';
 import kb from '../../../assets/keyboard.png';
 import gamepad from '../../../assets/gamepad.png';
 
-
+/**
+ * Gère l'affichage des étapes et la sauvegarde dans le contexte des éléments de config pour un joueur
+ * @param {object} props 
+ * @returns {JSX} Block de configuration d'un joueur
+ */
 const PlayerConfig = ({player, other, position, label2, setPlayer, gamepads, keyboard}) => {
     const {players} = useContext(GameContext);
 

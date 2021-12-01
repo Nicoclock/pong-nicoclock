@@ -17,15 +17,17 @@ const GameContext = createContext({
     closeGame: () => {}
 });
 
+//Provider prêt à l'emploi
 export const GameProvider = ({children}) => {
 
     const [playerLeft, setPlayerLeft] = useState(null);
     const [playerRight, setPlayerRight] = useState(null);
     const [players, setPlayers] = useState([]);
-    const [gamepads, setGamepads] = useState([]);
+    const [gamepads, setGamepads] = useState([]); // présent mais non utilisé
     const [gameOver, setGameOver] = useState(false);
     const [ready, setReady] = useState(false);
 
+    //flag pour éviter des enregistrements multiples en BDD en fin de partie
     let done = false;
 
     const loopFunctions = {};
@@ -70,12 +72,14 @@ export const GameProvider = ({children}) => {
         }
     };
 
+    //lancement d'une nouvelle partie avec la config existante
     const resetGame = () => {
         setPlayerLeft({...playerLeft, score: 0});
         setPlayerRight({...playerRight, score: 0});
         setGameOver(false);
     };
 
+    //reset de la config
     const resetPlayers = () => {
         setPlayerLeft(null);
         setPlayerRight(null);

@@ -29,7 +29,7 @@ describe('Server', () => {
 
     test('GET /scores', async () => {
 		try {
-			const response = await request(http).get('/scores');
+			const response = await request(http).get('/api/scores');
 			expect(response.statusCode).toBe(200);
 			expect(response.body.length).toBe(10);
         } catch(error) {
@@ -40,7 +40,7 @@ describe('Server', () => {
 	describe('GET /scores/:playerId', () => {
 		test('GET /scores/:playerId avec playerId invalide', async () => {
 			try {
-				const response = await request(http).get('/scores/test');
+				const response = await request(http).get('/api/scores/test');
 				expect(response.statusCode).toBe(400);
 				expect(typeof response.body).toBe('string');
 			} catch(error) {
@@ -50,7 +50,7 @@ describe('Server', () => {
 	
 		test('GET /scores/:playerId avec playerId inexistant', async () => {
 			try {
-				const response = await request(http).get('/scores/25');
+				const response = await request(http).get('/api/scores/25');
 				expect(response.statusCode).toBe(200);
 				expect(response.body.length).toBe(0);
 			} catch(error) {
@@ -60,7 +60,7 @@ describe('Server', () => {
 	
 		test('GET /scores/:playerId avec playerId valide', async () => {
 			try {
-				const response = await request(http).get('/scores/8');
+				const response = await request(http).get('/api/scores/8');
 				expect(response.statusCode).toBe(200);
 				expect(response.body.length).toBe(3);
 			} catch(error) {
@@ -71,7 +71,7 @@ describe('Server', () => {
 
 	describe('POST /scores', () => {
 		test('POST /scores sans data', async () => {
-			const response = await request(http).post('/scores').set('Content-Type', 'application/json').send({});
+			const response = await request(http).post('/api/scores').set('Content-Type', 'application/json').send({});
 			expect(response.statusCode).toBe(400);
 			expect(typeof response.body).toBe('string');
 		});
@@ -80,7 +80,7 @@ describe('Server', () => {
 			const data = {
 				joueur1: 5
 			}
-			const response = await request(http).post('/scores').set('Content-Type', 'application/json').send(data);
+			const response = await request(http).post('/api/scores').set('Content-Type', 'application/json').send(data);
 			expect(response.statusCode).toBe(400);
 			expect(typeof response.body).toBe('string');
 		});
@@ -92,7 +92,7 @@ describe('Server', () => {
                 joueur2: 8,
                 score2: 5
 			}
-			const response = await request(http).post('/scores').set('Content-Type', 'application/json').send(data);
+			const response = await request(http).post('/api/scores').set('Content-Type', 'application/json').send(data);
 			console.log(response.body);
 			expect(response.statusCode).toBe(201);
 			expect(typeof response.body).toBe('object');
@@ -102,7 +102,7 @@ describe('Server', () => {
 	});
 
 	test('GET /players', async () => {
-		const response = await request(http).get('/players');
+		const response = await request(http).get('/api/players');
 		expect(response.statusCode).toBe(200);
 		expect(response.body.length).toBe(10);
 	});

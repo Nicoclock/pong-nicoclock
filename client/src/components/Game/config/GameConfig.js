@@ -8,15 +8,20 @@ import useAutoscroll from '../../../hooks/useAutoscroll';
 
 import styles from '../Game.module.css';
 
-
+/**
+ * Container de configuration du jeu
+ * Une ref vers la div App est fournie pour permettre le scroll
+ */
 const GameConfig = forwardRef(({appRef, setReady}, ref) => {
     useTitle('Configuration des joueurs');
-    useAutoscroll(appRef, ref);
+    useAutoscroll(appRef);
     const {playerLeft, setPlayerLeft, playerRight, setPlayerRight} = useContext(GameContext);
 
+    //flag pour afficher le tip lors de l'utilisation d'un gamepad
     const withGamepad = (playerLeft && playerLeft.device && playerLeft.device === 'gamepad') || 
     (playerRight && playerRight.device && playerRight.device === 'gamepad');
 
+    //flag pour indiquer que la config est complère
     const validConfig = (
         playerLeft && playerLeft.device && (playerLeft.deviceIndex !== undefined || playerLeft.up)
     ) && (

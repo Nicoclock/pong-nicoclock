@@ -6,11 +6,20 @@ import ScoresTable from './ScoresTable';
 
 import styles from './Scores.module.css';
 
+/**
+ * Affichage des scores pour tous les joueurs ou pour un joueur spécifique
+ * @returns {JSX} Container de l'affichage des scores
+ */
 const Scores = () => {
     useTitle('Scores');
+
+    //logique de tri des data 
     const [state, changeHandler, sortHandler] = useSort();
+
+    //utilitaire pour ajouter les variables de tri
     const sortedUrl = () => `${state.url}?sortBy=${state.sortBy}&sortDir=${state.sortDir}`;
 
+    //récupération des data
     const [error, scores] = useFetch(sortedUrl());
 
     return (

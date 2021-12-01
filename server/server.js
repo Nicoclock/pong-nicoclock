@@ -6,11 +6,14 @@ const app = express();
 
 // ouverture de l'API aux requests venant de localhost:3000 et de la machine de prod
 app.use(cors({
-	origin: [`http://localhost:3000`, `http://178.32.220.230:3500`]
+	origin: [`http://localhost:3000`, `http://178.32.220.230:3500`, 'http://178.32.220.230']
 }));
 
 // parser json pour le request.body
 app.use(express.json());
+
+//ressources statiques
+app.use(express.static('./public'));
 
 //doc de l'API
 const options = {
@@ -66,6 +69,6 @@ if (process.env.NODE_ENV === 'test') {
 // on exporte une fonction afin de pouvoir configurer les connexion à Postgres et à Redis lors des tests
 module.exports = (db, redis) => {
 	const router = require('./app/router')(db, redis);
-	app.use(router);
+	app.use('/api', router);
 	return httpServer;
 }

@@ -7,10 +7,10 @@ Il s'agit d'un ping-pong virtuel en 11 points
 
 ## Stack technique
 
-[PostgreSQL](https://www.postgresql.org/)  
-[Sqitch](https://sqitch.org/)  
-[Redis](https://redis.io/)  
-[NodeJs](https://nodejs.org/fr/)
+[PostgreSQL](https://www.postgresql.org/)  >= v12
+[Sqitch](https://sqitch.org/)  latest
+[Redis](https://redis.io/)  latest
+[NodeJs](https://nodejs.org/fr/) >= v12
 
 Tous ces éléments doivent être installé sur l'hôte pour faire fonctionner l'API
 
@@ -31,16 +31,9 @@ CREATE USER <username> WITH PASSWORD '<password>';
 CREATE DATABASE pong OWNER <username>
 ```
 
-### Seeding
-
-Des données de test sont disponibles dans le dossier server/data  
-Pour les utiliser :
-
-```bash
-psql -U <username> -d pong -f <chemin/vers/server/data/seed.sql>
-```
-
 ### Fichiers de configuration
+
+Se positionner dans le dossier `server`
 
 Copier le fichier sqitch.example.conf en le renommant en sqitch.conf
 
@@ -58,6 +51,15 @@ Pour déployer la structure, se positionner dans le dossier `server` et lancer l
 
 ```bash
 PGUSER=<username> PGPASSWORD=<password> sqitch deploy
+```
+
+### Seeding
+
+Des données de test sont disponibles dans le dossier server/data  
+Pour les utiliser :
+
+```bash
+psql -U <username> -d pong -f <chemin/vers/server/data/seed.sql>
 ```
 
 ### Récupération des dépendances
@@ -110,3 +112,65 @@ Afin d'accélérer la récupération des informations, chaque résultat d'une re
 Ce délai garantit qu'aucune information devenue inutile ne persitera dans le cache
 
 Les entrées en cache seront automatiquement supprimées à chaque ajout d'un nouveau score en BDD afin de déclencher une nouvelle requête SQL pour obtenir la liste des scores mise à jour
+
+# Client
+
+Réalisé avec react 17
+
+## Installation
+
+Se positionner dans le dossier `client`
+
+### Fichiers de configuration
+
+Copier le fichier .env.example en le renommant en .env
+
+Compléter ce fichier avec les informations de connexion à la BDD, au cache Redis et le port de l'application express
+
+### Récupération des dépendances
+
+Depuis le dossier `server`, lancer la commande
+
+```bash
+npm install
+```
+
+## Développement
+
+### Lancement de la version développement
+
+```bash
+npm start
+```
+
+## Production
+
+### Création de la version optimisée de production
+
+```bash
+npm run build
+```
+
+### Copie des fichiers optimisés dans le dossier des ressources statiques
+
+Depius le dossier `client`, lancer la commande :
+
+```bash
+cp -R ./build/* ../server/public
+```
+
+## Composants de l'application
+
+![Arbre des compôsants](./server/conception/ArbreComposants.png)
+
+## Custom hooks
+
+- useAutoscroll : permet de scroller automatiquement en bas de page lors de la configuration du jeu
+- useBallLoop : gestion de la boucle d'animation du jeu
+- useDevices : configure l' EventListener du clavier ou les fonctions d'animation du/des gamepads
+- useFetch : effectue les requête en GET vers l'API
+- useGamepad : gestion des événements de détection des gamepads
+- useLoop : boucle d'animation globale
+- useResize : gestion du comportement du "terrain de jeu" lors du redimensionnement de la fenêtre
+- useSort : gestion de la logique de tri des éléments du tableau des scores
+- useTitle : Mise à jour du titre de l'onglet

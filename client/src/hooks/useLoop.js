@@ -2,19 +2,15 @@ import {useEffect, useContext} from 'react';
 
 import GameContext from '../store/GameContext';
 
-
 const useLoop = () => {
 
     const {loopFunctions} = useContext(GameContext);
 
-
     useEffect(() => {
-        let start = 0;
-        const loop = (elapsed) => {
-            const delta = elapsed - start;
-            start = elapsed;
+        //boucle d'animation globale
+        const loop = () => {
             for (const name in loopFunctions) 
-                loopFunctions[name](elapsed, delta);
+                loopFunctions[name]();
             result = requestAnimationFrame(loop);
         }
         let result = requestAnimationFrame(loop);
